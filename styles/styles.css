@@ -103,10 +103,12 @@ input:focus {
 
 .project {
   border: 1px solid #ddd;
+  background-color: #f4f4f4;
   border-radius: 8px;
   padding: 1rem;
   /* max-width: 250px; */
   text-align: center;
+  margin-bottom: 2rem;
   display: flex;
   gap: 1rem;
   flex-direction: column;
@@ -129,6 +131,10 @@ input:focus {
 .description {
   /* width: 200px; */
   margin-top: -70px;
+}
+
+.addProject {
+  margin-top: 3rem;
 }
 
 /* Contact Section */

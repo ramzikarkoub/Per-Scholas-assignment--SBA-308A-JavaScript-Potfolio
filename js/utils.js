@@ -12,6 +12,10 @@ export function displayData(fetchedData) {
               class="project-img" 
             />
             <h3 class="title">${project.title.rendered}</h3>
+            <h5 class="Tech">Technologies used: ${
+              project.acf.technologiesTechnologies
+            }</h5>
+            
             <p class="description">${project.content.rendered.substring(
               0,
               300

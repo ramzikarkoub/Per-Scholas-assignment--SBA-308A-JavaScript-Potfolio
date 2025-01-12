@@ -5,6 +5,11 @@ let fetchedData;
 const projects = document.getElementById("projects");
 const loader = document.getElementById("loader");
 const submitBtn = document.querySelector(".submitBtn");
+const projectName = document.querySelector(".projectName");
+const projectImage = document.querySelector(".projectImage");
+const projectTechUsed = document.querySelector(".projectTechUsed");
+const projectDesx = document.querySelector(".projectDesx");
+const submitProjectSend = document.querySelector(".submitProjectSend");
 
 const inialLoad = async (query = "") => {
   fetchedData = await loadProjects(); // Assign to global variable
@@ -17,6 +22,11 @@ const inialLoad = async (query = "") => {
     displayData(fetchedData); // Display all data initially
   }
 };
+
+submitProjectSend.addEventListener("click", (e) => {
+  e.preventDefault();
+  console.log(projectImage.value);
+});
 
 // Filter and display data on search
 submitBtn.addEventListener("click", (e) => {
