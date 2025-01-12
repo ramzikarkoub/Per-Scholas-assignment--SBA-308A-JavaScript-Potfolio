@@ -1,43 +1,41 @@
 import { loadProjects } from "./api.js";
+import { displayData } from "./utils.js";
+
+let fetchedData;
+const projects = document.getElementById("projects");
+const loader = document.getElementById("loader");
+const submitBtn = document.querySelector(".submitBtn");
 
 const inialLoad = async (query = "") => {
-  const fetchedData = await loadProjects();
+  fetchedData = await loadProjects(); // Assign to global variable
   console.log(fetchedData);
-  const projects = document.getElementById("projects");
-  const project = document.getElementById("project");
-  const loader = document.getElementById("loader");
-  loader.style.display = "block";
-
-  //   const projects = await fetchProjects(query);
-  loader.style.display = "none";
 
   if (fetchedData.length === 0) {
     projects.innerHTML = "<p>No projects found.</p>";
     return;
   } else {
-    let projectHTML = fetchedData
-      .map(
-        (project) =>
-          `<div id="project" class="project">
-          <img
-            src=${
-              project.acf.image
-                ? project.acf.image
-                : project.acf.image_thumbnail
-            } class="project-img" />
-          <h3 class="title">${project.title.rendered}</h3>
-          <p class="description">${project.content.rendered.substring(
-            0,
-            300
-          )}</p>
-          <a href="${project.acf.url}" target="_blank">View Project</a>
-          </div>
-  
-        `
-      )
-      .join("");
-
-    project.innerHTML = projectHTML;
+    displayData(fetchedData); // Display all data initially
   }
 };
+
+// Filter and display data on search
+submitBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  const searchInput = document.querySelector(".search-input").value.trim();
+  console.log("object");
+  console.log(fetchedData);
+
+  const filteredData = fetchedData.filter((e) => {
+    return e.title.rendered.toLowerCase().includes(searchInput.toLowerCase());
+  });
+  console.log(filteredData);
+
+  if (filteredData.length === 0) {
+    projects.innerHTML = "<p>No projects found.</p>";
+  } else {
+    displayData(filteredData); // Update with filtered data
+  }
+});
+
+// Call initial load
 inialLoad();
