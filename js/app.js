@@ -25,7 +25,10 @@ const inialLoad = async (query = "") => {
 
 submitProjectSend.addEventListener("click", (e) => {
   e.preventDefault();
+  console.log(projectName.value);
   console.log(projectImage.value);
+  console.log(projectTechUsed.value);
+  console.log(projectDesx.value);
 });
 
 // Filter and display data on search
