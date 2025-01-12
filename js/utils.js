@@ -1,7 +1,8 @@
 export function displayData(fetchedData) {
-  let projectHTML = fetchedData.map(
-    (project) =>
-      `<div id="project" class="project">
+  let projectHTML = fetchedData
+    .map(
+      (project) =>
+        `<div id="project" class="project">
             <img
               src="${
                 project.acf.image
@@ -14,7 +15,6 @@ export function displayData(fetchedData) {
             <h5 class="Tech">Technologies used: ${
               project.acf.technologiesTechnologies
             }</h5>
-            
             <p class="description">${project.content.rendered.substring(
               0,
               300
@@ -23,7 +23,8 @@ export function displayData(fetchedData) {
               project.acf.url
             }" target="_blank"  class="view-project">View Project</a>
           </div>`
-  );
+    )
+    .join("");
 
   projects.innerHTML = projectHTML;
 }

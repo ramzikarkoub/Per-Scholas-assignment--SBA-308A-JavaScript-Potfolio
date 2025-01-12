@@ -22,7 +22,7 @@ header {
 
 /* Navigation */
 nav {
-  background-color: #444;
+  background-color: #09a2a0;
   display: flex;
   justify-content: center;
   padding: 1rem 0;
@@ -177,12 +177,12 @@ herearethestyledclassesforyourtwobuttons: css Copy code .submitBtn {
   transition: background-color 0.3s ease-in-out;
 }
 
-.submitBtn:hover {
+/* .submitBtn:hover {
   background-color: #2980b9;
-}
+} */
 
 .submitProjectSend {
-  background-color: #333;
+  background-color: #09a2a0;
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
@@ -196,7 +196,7 @@ herearethestyledclassesforyourtwobuttons: css Copy code .submitBtn {
   background-color: #000000;
 }
 .submitBtn {
-  background-color: #333;
+  background-color: #09a2a0;
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
@@ -210,7 +210,7 @@ herearethestyledclassesforyourtwobuttons: css Copy code .submitBtn {
   background-color: #000000;
 }
 .view-project {
-  background-color: #333;
+  background-color: #09a2a0;
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
