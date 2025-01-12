@@ -28,48 +28,52 @@ const inialLoad = async (query = "") => {
 
 submitProjectSend.addEventListener("click", async (e) => {
   e.preventDefault();
-  const nameProject = projectName.value;
-  const proImg = projectImage.value;
-  const techUsedProject = projectTechUsed.value;
-  const descProject = projectDesx.value;
-  const code = authCode.value;
-  const url = projectUrl.value;
-  const data = {
-    proImg,
-    nameProject,
-    techUsedProject,
-    url,
-    descProject,
-    code,
-  };
-  const req = await fetch("https://jsonplaceholder.typicode.com/posts", {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-type": "application/json",
-    },
-  });
-  const res = await req.json();
-  if (
-    !nameProject ||
-    !proImg ||
-    !techUsedProject ||
-    !descProject ||
-    !code ||
-    !url
-  ) {
-    alert("Please fill in all fields before submitting!");
-    return;
-  }
-  if (
-    data.nameProject &&
-    data.proImg &&
-    data.techUsedProject &&
-    data.descProject &&
-    data.code &&
-    data.url
-  ) {
-    displayNewProject(data);
+  try {
+    const nameProject = projectName.value;
+    const proImg = projectImage.value;
+    const techUsedProject = projectTechUsed.value;
+    const descProject = projectDesx.value;
+    const code = authCode.value;
+    const url = projectUrl.value;
+    const data = {
+      proImg,
+      nameProject,
+      techUsedProject,
+      url,
+      descProject,
+      code,
+    };
+
+    const req = await axios.post(
+      "https://jsonplaceholder.typicode.com/posts",
+      data
+    );
+    // const res = await req.json();
+
+    if (
+      !nameProject ||
+      !proImg ||
+      !techUsedProject ||
+      !descProject ||
+      !code ||
+      !url
+    ) {
+      alert("Please fill in all fields before submitting!");
+      return;
+    }
+    if (
+      data.nameProject &&
+      data.proImg &&
+      data.techUsedProject &&
+      data.descProject &&
+      data.code &&
+      data.url
+    ) {
+      console.log("POST status ", req.status);
+      displayNewProject(data);
+    }
+  } catch (error) {
+    console.log(error);
   }
 });
 
