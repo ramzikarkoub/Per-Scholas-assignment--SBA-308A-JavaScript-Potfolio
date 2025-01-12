@@ -20,7 +20,9 @@ export function displayData(fetchedData) {
               0,
               300
             )}</p>
-            <a href="${project.acf.url}" target="_blank">View Project</a>
+            <a href="${
+              project.acf.url
+            }" target="_blank"  class="view-project">View Project</a>
           </div>`
     )
     .join("");
@@ -33,7 +35,9 @@ export function displayNewProject(data) {
       <h3 class="title">${data.nameProject}</h3>
       <h5 class="Tech">Technologies used: ${data.techUsedProject}</h5>
       <p class="description">${data.descProject.substring(0, 300)}</p>
-      <a href="${data.url}" target="_blank">View Project</a>
+      <a href="${
+        data.url
+      }" target="_blank" class="view-project">View Project</a>
     </div>`;
   projects.insertAdjacentHTML("afterbegin", newProject);
 }
