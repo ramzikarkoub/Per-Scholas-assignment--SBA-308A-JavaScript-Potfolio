@@ -10,16 +10,20 @@ const projectImage = document.querySelector(".projectImage");
 const projectTechUsed = document.querySelector(".projectTechUsed");
 const projectDesx = document.querySelector(".projectDesx");
 const submitProjectSend = document.querySelector(".submitProjectSend");
+const authCode = document.querySelector(".authCode");
+const projectUrl = document.querySelector(".projectUrl");
 
 const inialLoad = async (query = "") => {
-  fetchedData = await loadProjects(); // Assign to global variable
+  // Assign to global variable
+  fetchedData = await loadProjects();
   console.log(fetchedData);
 
   if (fetchedData.length === 0) {
     projects.innerHTML = "<p>No projects found.</p>";
     return;
   } else {
-    displayData(fetchedData); // Display all data initially
+    // Display all data initially
+    displayData(fetchedData);
   }
 };
 
@@ -29,17 +33,15 @@ submitProjectSend.addEventListener("click", async (e) => {
   const proImg = projectImage.value;
   const techUsedProject = projectTechUsed.value;
   const descProject = projectDesx.value;
-
-  // const name = projectName.value;
-  // const projectImage = projectImage.value;
-  // const projectTechUsed = projectTechUsed.value;
-  // const projectDesx = projectDesx.value;
-
+  const code = authCode.value;
+  const url = projectUrl.value;
   const data = {
-    nameProject,
     proImg,
+    nameProject,
     techUsedProject,
+    url,
     descProject,
+    code,
   };
   const req = await fetch("https://jsonplaceholder.typicode.com/posts", {
     method: "POST",
@@ -49,7 +51,36 @@ submitProjectSend.addEventListener("click", async (e) => {
     },
   });
   const res = await req.json();
-  console.log(res.status);
+  console.log(res);
+  if (
+    !nameProject ||
+    !proImg ||
+    !techUsedProject ||
+    !descProject ||
+    !code ||
+    !url
+  ) {
+    alert("Please fill in all fields before submitting!");
+    return;
+  }
+  if (
+    data.nameProject &&
+    data.proImg &&
+    data.techUsedProject &&
+    data.descProject &&
+    data.code &&
+    data.url
+  ) {
+    const newProject = `<div id="project" class="project">
+      <img src="${data.proImg}" class="project-img" />
+      <h3 class="title">${data.nameProject}</h3>
+      <h5 class="Tech">Technologies used: ${data.techUsedProject}</h5>
+      <p class="description">${data.descProject.substring(0, 300)}</p>
+      <a href="${data.url}" target="_blank">View Project</a>
+    </div>`;
+    // const projectContainer = document.getElementById("projects");
+    projects.insertAdjacentHTML("afterbegin", newProject);
+  }
 });
 
 // Filter and display data on search
@@ -67,7 +98,8 @@ submitBtn.addEventListener("click", (e) => {
   if (filteredData.length === 0) {
     projects.innerHTML = "<p>No projects found.</p>";
   } else {
-    displayData(filteredData); // Update with filtered data
+    // Update with filtered data
+    displayData(filteredData);
   }
 });
 
