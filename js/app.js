@@ -1,5 +1,6 @@
 import { loadProjects } from "./api.js";
 import { displayData } from "./utils.js";
+import { displayNewProject } from "./utils.js";
 
 let fetchedData;
 const projects = document.getElementById("projects");
@@ -16,8 +17,6 @@ const projectUrl = document.querySelector(".projectUrl");
 const inialLoad = async (query = "") => {
   // Assign to global variable
   fetchedData = await loadProjects();
-  console.log(fetchedData);
-
   if (fetchedData.length === 0) {
     projects.innerHTML = "<p>No projects found.</p>";
     return;
@@ -51,7 +50,6 @@ submitProjectSend.addEventListener("click", async (e) => {
     },
   });
   const res = await req.json();
-  console.log(res);
   if (
     !nameProject ||
     !proImg ||
@@ -71,15 +69,7 @@ submitProjectSend.addEventListener("click", async (e) => {
     data.code &&
     data.url
   ) {
-    const newProject = `<div id="project" class="project">
-      <img src="${data.proImg}" class="project-img" />
-      <h3 class="title">${data.nameProject}</h3>
-      <h5 class="Tech">Technologies used: ${data.techUsedProject}</h5>
-      <p class="description">${data.descProject.substring(0, 300)}</p>
-      <a href="${data.url}" target="_blank">View Project</a>
-    </div>`;
-    // const projectContainer = document.getElementById("projects");
-    projects.insertAdjacentHTML("afterbegin", newProject);
+    displayNewProject(data);
   }
 });
 
@@ -87,13 +77,10 @@ submitProjectSend.addEventListener("click", async (e) => {
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
   const searchInput = document.querySelector(".search-input").value.trim();
-  console.log("object");
-  console.log(fetchedData);
 
   const filteredData = fetchedData.filter((e) => {
     return e.title.rendered.toLowerCase().includes(searchInput.toLowerCase());
   });
-  console.log(filteredData);
 
   if (filteredData.length === 0) {
     projects.innerHTML = "<p>No projects found.</p>";

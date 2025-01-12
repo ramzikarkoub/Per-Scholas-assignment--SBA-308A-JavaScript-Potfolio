@@ -27,3 +27,13 @@ export function displayData(fetchedData) {
 
   projects.innerHTML = projectHTML;
 }
+export function displayNewProject(data) {
+  const newProject = `<div id="project" class="project">
+      <img src="${data.proImg}" class="project-img" />
+      <h3 class="title">${data.nameProject}</h3>
+      <h5 class="Tech">Technologies used: ${data.techUsedProject}</h5>
+      <p class="description">${data.descProject.substring(0, 300)}</p>
+      <a href="${data.url}" target="_blank">View Project</a>
+    </div>`;
+  projects.insertAdjacentHTML("afterbegin", newProject);
+}
