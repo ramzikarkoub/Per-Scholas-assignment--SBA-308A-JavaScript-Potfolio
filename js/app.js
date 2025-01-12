@@ -23,12 +23,33 @@ const inialLoad = async (query = "") => {
   }
 };
 
-submitProjectSend.addEventListener("click", (e) => {
+submitProjectSend.addEventListener("click", async (e) => {
   e.preventDefault();
-  console.log(projectName.value);
-  console.log(projectImage.value);
-  console.log(projectTechUsed.value);
-  console.log(projectDesx.value);
+  const nameProject = projectName.value;
+  const proImg = projectImage.value;
+  const techUsedProject = projectTechUsed.value;
+  const descProject = projectDesx.value;
+
+  // const name = projectName.value;
+  // const projectImage = projectImage.value;
+  // const projectTechUsed = projectTechUsed.value;
+  // const projectDesx = projectDesx.value;
+
+  const data = {
+    nameProject,
+    proImg,
+    techUsedProject,
+    descProject,
+  };
+  const req = await fetch("https://jsonplaceholder.typicode.com/posts", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-type": "application/json",
+    },
+  });
+  const res = await req.json();
+  console.log(res.status);
 });
 
 // Filter and display data on search
