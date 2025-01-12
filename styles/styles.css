@@ -56,14 +56,19 @@ nav a:hover {
 
 /* About Section */
 .about {
+  display: flex;
+  gap: 3rem;
+  /* flex-direction: column; */
   text-align: center;
   margin: 6rem 0 3rem;
-  padding: 6rem 3rem;
+  padding: 3rem 3rem;
   max-width: 900px;
   background-color: #f4f4f4;
   /* padding: 1rem; */
   border: 1px solid #ddd;
   border-radius: 8px;
+}
+.about-title-desc {
 }
 
 .about img {
@@ -252,7 +257,12 @@ footer a:hover {
   height: 50px;
   animation: spin 1s linear infinite;
 }
-
+hr {
+  margin-top: 3rem;
+  margin-bottom: -2rem;
+  border-color: #ddd;
+  opacity: 0.4;
+}
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -269,5 +279,6 @@ footer a:hover {
   }
   .about {
     margin-top: 0;
+    display: block;
   }
 }
