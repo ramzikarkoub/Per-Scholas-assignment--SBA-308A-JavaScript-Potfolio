@@ -19,9 +19,6 @@ header {
   align-items: center;
 }
 /* 
-header h1 {
-  margin: 0;
-} */
 
 /* Navigation */
 nav {
@@ -61,17 +58,18 @@ nav a:hover {
 .about {
   text-align: center;
   margin: 6rem 0 3rem;
-  max-width: 970px;
+  padding: 6rem 3rem;
+  max-width: 900px;
   background-color: #f4f4f4;
-  padding: 1rem;
+  /* padding: 1rem; */
   border: 1px solid #ddd;
   border-radius: 8px;
 }
 
 .about img {
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
+  width: 250px;
+  height: 250px;
 }
 
 /* Sidebar */
@@ -104,8 +102,6 @@ input:focus {
 /* Projects Section */
 .projects {
   flex: 3;
-  /* display: grid; */
-  /* flex-direction: column; */
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
 }
@@ -115,7 +111,6 @@ input:focus {
   background-color: #f4f4f4;
   border-radius: 8px;
   padding: 1rem;
-  /* max-width: 250px; */
   text-align: center;
   margin-bottom: 2rem;
   display: flex;
@@ -125,32 +120,19 @@ input:focus {
   align-items: center;
 }
 
-/* .project img {
-  max-width: 100px;
-  border-radius: 8px;
-} */
 .project-img {
   width: 100%;
   border-radius: 10px;
   border: 1px solid #dddddd;
 }
-/* .title { */
-/* width: 200px; */
-/* } */
+
 .description {
-  /* width: 200px; */
   margin-top: -70px;
 }
 .Tech {
   margin-top: -30px;
 }
-.view-project {
-  background-color: black;
-  padding: 0.8rem;
-  border-radius: 5px;
-  color: white;
-  text-decoration: none;
-}
+
 .projectDesx {
   padding: 0.8rem;
   width: 90%;
@@ -184,6 +166,64 @@ input:focus {
   text-decoration: underline;
 }
 
+herearethestyledclassesforyourtwobuttons: css Copy code .submitBtn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.submitBtn:hover {
+  background-color: #2980b9;
+}
+
+.submitProjectSend {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.submitProjectSend:hover {
+  background-color: #000000;
+}
+.submitBtn {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.submitBtn:hover {
+  background-color: #000000;
+}
+.view-project {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+.view-project:hover {
+  background-color: #000000;
+}
 /* Footer */
 footer {
   background-color: #333;
@@ -225,11 +265,9 @@ footer a:hover {
 @media only screen and (max-width: 600px) {
   .main-layout {
     display: block;
-    /* width: 100%; */
     margin: 0;
   }
   .about {
-    padding: 4rem 1rem;
     margin-top: 0;
   }
 }
